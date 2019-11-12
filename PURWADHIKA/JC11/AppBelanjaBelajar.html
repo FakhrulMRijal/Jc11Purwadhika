@@ -1,0 +1,150 @@
+<script>
+    var bebas = true
+    while(bebas){
+        var proteksiMenu = true
+        var menu = prompt('silahkan pilih menu \n 1. belanja \n 2. belajar \n 3. keluar')
+        if(menu == 1){
+            while(proteksiMenu){
+                var belanja = prompt('mau belanja apa? \n 1. apel Rp. 10.000 \n 2. mangga Rp. 20.000\n 3.kiwi Rp. 30.000')
+                var proteksiQty = true
+                if(belanja == 1){
+                    alert('anda beli apel')
+                    while(proteksiQty){
+                        var input = parseInt(prompt('mau beli berapa kilo'))
+                        if(isNaN(input)){
+                            alert('input anda salah')
+                        }else{
+                            alert('total harga anda Rp. ' + (input * 10000).toLocaleString())
+                            proteksiMenu = false
+                            bebas = false
+                            proteksiQty = false
+                        }
+                    }
+                }else if(belanja == 2){
+                    alert('anda beli mangga')
+                    while(proteksiQty){
+                        var input = parseInt(prompt('mau beli berapa kilo'))
+                        if(isNaN(input)){
+                            alert('input anda salah')
+                        }else{
+                            alert('total harga anda Rp. ' + (input * 20000).toLocaleString())
+                            proteksiMenu = false
+                            bebas = false
+                            proteksiQty = false
+                        }
+                    }
+                }else if(belanja == 3){
+                    alert('anda beli kiwi')
+                    while(proteksiQty){
+                        var input = parseInt(prompt('mau beli berapa kilo'))
+                        if(isNaN(input)){
+                            alert('input anda salah')
+                        }else{
+                            alert('total harga anda Rp.' + (input * 30000).toLocaleString())
+                            proteksiMenu = false
+                            bebas = false
+                            proteksiQty = false
+                        }
+                    }
+                }else{
+                    alert('input anda salah')
+                }
+            }
+        }else if (menu == 2){
+            var proteksiBelajar = true
+            while(proteksiBelajar){
+                var belajar = prompt('mau belajar apa? \n 1. tambah \n 2. kurang \n 3. bagi \n 4. kali')
+                var proteksIinput = true
+                if(belajar ==1){
+                    while(proteksIinput){
+                        var input1 = parseInt(prompt('masukkan angka pertama'))
+                        var input2 = parseInt(prompt('masukkan angka kedua'))
+                        if(input1 >0 && input2 >0){
+                            alert('hasil anda ' + (parseInt(input1) + parseInt(input2)))
+                            var redirect = prompt('1. Kembali ke menu belajar \n 2. kembali ke menu utama \n 3. keluar')
+                            if(redirect == 1){
+                                proteksIinput = false
+                            }else if(redirect == 2){
+                                proteksiBelajar = false
+                                proteksIinput = false
+                            }else if(redirect == 3){
+                                proteksiBelajar = false
+                                proteksIinput = false
+                                bebas = false
+                            }
+                        }else{
+                            alert('salah satu input anda salah')
+                        }
+                    }
+                }else if(belajar == 2 ){
+                    while(proteksIinput){
+                        var input1 = parseInt(prompt('masukkan angka pertama'))
+                        var input2 = parseInt(prompt('masukkan angka kedua'))
+                        if(input1 >0 && input2 >0){
+                            alert('hasil anda ' + (parseInt(input1) - parseInt(input2)))
+                            var redirect = prompt('1. Kembali ke menu belajar \n 2. kembali ke menu utama \n 3. keluar')
+                            if(redirect == 1){
+                                proteksIinput = false
+                            }else if(redirect == 2){
+                                proteksiBelajar = false
+                                proteksIinput = false
+                            }else if(redirect == 3){
+                                proteksiBelajar = false
+                                proteksIinput = false
+                                bebas = false
+                            }
+                        }else{
+                            alert('salah satu input anda salah')
+                        }
+                    }
+                }else if(belajar == 3){
+                    while(proteksIinput){
+                        var input1 = parseInt(prompt('masukkan angka pertama'))
+                        var input2 = parseInt(prompt('masukkan angka kedua'))
+                        if(input1 >0 && input2 >0){
+                            alert('hasil anda ' + (parseInt(input1) / parseInt(input2)))
+                            var redirect = prompt('1. Kembali ke menu belajar \n 2. kembali ke menu utama \n 3. keluar')
+                            if(redirect == 1){
+                                proteksIinput = false
+                            }else if(redirect == 2){
+                                proteksiBelajar = false
+                                proteksIinput = false
+                            }else if(redirect == 3){
+                                proteksiBelajar = false
+                                proteksIinput = false
+                                bebas = false
+                            }
+                        }else{
+                            alert('salah satu input anda salah')
+                        }
+                    }
+                }else if(belajar == 4){
+                    while(proteksIinput){
+                        var input1 = parseInt(prompt('masukkan angka pertama'))
+                        var input2 = parseInt(prompt('masukkan angka kedua'))
+                        if(input1 >0 && input2 >0){
+                            alert('hasil anda ' + (parseInt(input1) * parseInt(input2)))
+                            var redirect = prompt('1. Kembali ke menu belajar \n 2. kembali ke menu utama \n 3. keluar')
+                            if(redirect == 1){
+                                proteksIinput = false
+                            }else if(redirect == 2){
+                                proteksiBelajar = false
+                                proteksIinput = false
+                            }else if(redirect == 3){
+                                // proteksiBelajar = false
+                                // proteksIinput = false
+                                bebas = false
+                            }
+                        }else{
+                        alert('salah satu input anda salah')
+                        }
+                    }
+                }else{
+                    alert('input anda salah')
+                }
+            }
+        }else if(menu ==3){
+            bebas = false
+        }
+    }
+</script>

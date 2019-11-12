@@ -1,0 +1,55 @@
+// Tugas
+
+function tengah(str) {
+    var x = [];
+    var o = [];
+    for (var i = 0; i < str.length; i++) { 
+        if (str[i].toLowerCase() === 'x') { 
+            x.push(str[i]); 
+        } else if (str[i].toLowerCase() === 'o') {
+            o.push(str[i]);
+        }
+    }
+    if (x.length == o.length) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(tengah('xoox'))// true
+console.log(tengah('xxoo'))// true
+console.log(tengah('xooox'))// false
+
+function tengah(str){
+    var output = str.split('').join('')
+    for(var i = 0; i < str.length; i++){
+        if(str.length < 4){
+            return output.substr(1,2)
+        } else if(str.length < 6){
+            return output.slice(1, 2)
+        } else if(str.length > 6){
+            return output.slice(0, 1)
+        }
+
+    }
+}
+
+console.log(tengah('tes'))// 'es'
+console.log(tengah('testing'))// 't'
+console.log(tengah('Billy'))//i
+
+function arr(array, num){
+   return array.map(a => a*num)
+}
+
+console.log(arr([1, 2, 3], 2))
+console.log(arr([3, 6, 1], 3))
+
+    
+    return output
+}
+
+console.log(remove('lian'))
+console.log(remove('Andi'))
+console.log(remove('Susilo'))

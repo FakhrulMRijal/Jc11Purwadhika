@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Simple eCommerce</title>
+</head>
+<style>
+    table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    }
+
+    table td, table th {
+    padding: 8px;
+    }
+
+    
+    table th {
+    text-align: left;
+    background-color: green;
+    color: white;
+    }
+    div {
+        font-family: "Verdana";
+    }
+  
+    
+</style>
+<body>
+        <center>
+            <h2>Smartphone List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="menu">
+                    
+                </tbody>
+            </table>
+            <h3>Your Cart: </h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="hasil">
+                    
+                </tbody>
+            </table>
+            
+            
+            <button onclick="calTotal()">Total Buy</button> -->
+             <div id="result"></div>
+        </center>
+        <script>
+            class Product{
+                constructor(name, image, price){
+                    this.name = name,
+                    this.image = image;
+                    this.price = price
+                }
+            }
+            var menu = [
+                new Product('Iphone', 'https://ibox.co.id/media/catalog/product/cache/3/image/9df78eab33525d08d6e5fb8d27136e95/i/p/iphone-s-white.png', 10000),
+                new Product('OnePlus', 'https://www.androidcentral.com/sites/androidcentral.com/files/styles/xlarge/public/article_images/2019/05/oneplus-7-black-render-front-back.png?itok=S6jBMSbX', 20000),
+                new Product('Samsung', 'https://res.cloudinary.com/spectrumobile/image/fetch/e_trim/w_360,h_480,c_fit,f_auto,q_auto,fl_lossy/http%3A%2F%2Fres.cloudinary.com%2Fspectrumobile%2Fimage%2Fupload%2Fv1549495813%2FSpecturm%2520Mobile%2520Buy%2520Flow%2FSamsung%2520SEA%2FS10%2FSM-G973UZWACHA_HERO_v2.png', 30000)
+            ]
+            var cart = []
+            function printMenu(){
+                var output = ''
+                for(var i = 0 ; i<menu.length; i++){
+                    output += `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${menu[i].name}</td>
+                            <td><img src="${menu[i].image}" alt='foto hp' width="100px" ></td>
+                            <td>${menu[i].price.toLocaleString()}</td>
+                            <td><input type="button" value="Add to Cart" onclick="addToCart(${i})"></td>
+                        </tr>
+                    `
+                }
+                document.getElementById("menu").innerHTML = output
+            }
+            function printCart(){
+                var output = ''
+                for(var i = 0 ; i<cart.length; i++){
+                    output += `
+                        <tr>
+                            <td>${i+1}</td>
+                            <td>${cart[i].name}</td>
+                            <td><img src="${cart[i].image}" alt='foto hp' width="100px" ></td>
+                            <td>${cart[i].price.toLocaleString()}</td>
+                            <td><input type="button" value="Delete" onclick="deleteCart(${i})"></td>
+                        </tr>
+                    `
+                }
+                document.getElementById("hasil").innerHTML = output
+            }
+            function addToCart(index){
+                cart.push(menu[index])
+                printCart()
+            }
+            
+            // deleteCart(index){
+            // }
+            function deleteCart(index){
+                cart.splice(index, 1)
+                printCart()
+            }
+
+            function calTotal(){
+                var total = 0
+                for(var i = 0; i < cart.length; i++){
+                    total += cart[i].price 
+                }
+                document.getElementById("result").innerHTML = 'Total Buy Rp.' + total.toLocaleString() + 'ThankYou'
+                cart = [];
+                printCart()
+            }
+            
+
+            printMenu()
+
+           
+        </script>
+    </body>
+    
+</html>

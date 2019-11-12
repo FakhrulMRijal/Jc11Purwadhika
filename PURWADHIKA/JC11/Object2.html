@@ -1,0 +1,187 @@
+<script>
+    class cetakanMenu{
+        constructor(nama, harga){
+            this.nama = nama,
+            this.harga = harga
+        }
+    }
+    class cetakanUser{
+        constructor(username, password){
+            this.username = username,
+            this.password = password,
+            this.role = 'user'
+        }
+    }
+    class Cart{
+        constructor(nama, harga, qty){
+            this.nama = nama, 
+            this.harga = harga,
+            this.qty = qty
+        }
+    }
+    var menu = [
+        {
+            nama: 'apel',
+            harga: 10000
+        },
+        {
+            nama: 'duren',
+            harga: 20000
+        }
+    ]
+    var user =[
+        {
+            username: 'lian',
+            password: 'asd123',
+            role: 'user'
+        },
+        {
+            username: 'admin',
+            password: 'admin',
+            role: 'admin'
+        }
+    ]
+    
+    function login(username, password){
+        for(var i = 0 ; i<user.length; i++){
+            if(username === user[i].username && password === user[i].password){
+                return user[i].role
+            }
+        }
+        return false
+    }
+    
+    function register(username, password){
+        var newUser = new cetakanUser(username, password)
+        return user.push(newUser)
+    }
+    function printMenu(){
+        var output = ''
+        for(var i = 0 ; i< menu.length ; i++){
+            output += (i+1)+'. '+ menu[i].nama + ': Rp. ' + menu[i].harga.toLocaleString() + '\n'
+            
+        }
+        return output
+    }
+    
+    function tambahProduk(nama, harga){
+        var buahBaru = new cetakanMenu(nama, harga)
+        return menu.push(buahBaru)
+    }
+    var cartUser = []
+    
+    function addToCart(nama, harga, qty){
+        var newItem = new Cart(nama, harga, qty)
+        return cartUser.push(newItem)
+    }
+    function printCart(){
+        var output = ''
+        for(var i = 0 ; i< cartUser.length ; i++){
+            output += (i+1) +'. ' + cartUser[i].nama + ' Rp. ' 
+            + cartUser[i].harga + ' == > ' + cartUser[i].qty +' kg \n' 
+        }
+        return output
+    }
+
+      function calculateTotal(){
+            var total = 0
+            for(var i = 0; i < cartUser.length; i++){
+                total += cartUser[i].harga * cartUser[i].qty
+            }
+            return total
+    }
+
+    
+    
+    var proteksi = true
+    while(proteksi){
+        var menuAwal = prompt(' 1. Login \n 2. Register \n 3. Keluar')
+        if(menuAwal === '1'){
+            var namaUser = prompt('Masukkan Username Anda')
+            var passUser = prompt('Masukkan password anda')
+            if(login(namaUser, passUser) === 'admin'){
+                var proteksiMenu = true
+                while(proteksiMenu){
+                    alert('Welcome')
+                    var pilihan = prompt('1. Lihat Menu \n 2. Tambah Produk \n 3. Delete Produk \n 4. Edit Produk \n 5. Keluar')
+                    if(pilihan === '1'){
+                        alert(printMenu())
+                    }else if(pilihan === '2'){
+                        var namaBuah = prompt('Masukkan Nama Produk')
+                        var hargaBuah = parseInt(prompt('Masukkan Harga Produk'))
+                        tambahProduk(namaBuah, hargaBuah)
+                        alert('Success')
+                    }else if(pilihan === '3' ){
+                        var pilihanDelete = parseInt(prompt(printMenu() +' \n' + 'Mau Delete yang Mana'))
+                        menu.splice(pilihanDelete-1, 1)
+                        alert('Success')
+                    }else if(pilihan === '4'){
+                        var pilihanEdit = parseInt(prompt(printMenu() +' \n' + 'Mau Edit yang Mana'))
+                        var editNama = prompt('Nama Produk Awal ' + menu[pilihanEdit -1].nama)
+                        var editHarga = parseInt(prompt('Harga Awal = Rp. ' + menu[pilihanEdit-1].harga))
+                        var confirm = prompt('Nama Produk Baru adalah ' + editNama + '\n dengan Harga Baru Rp. ' +editHarga.toLocaleString() + '\n 1. Setuju \n 2. Tidak')
+                        if(confirm === '1'){
+                            menu[pilihanEdit - 1].nama = editNama
+                            menu[pilihanEdit -1].harga = editHarga.toLocaleString()
+                            alert('Success')
+                        }else if(confirm === '2'){
+                            // alert('Cancel')
+                        }
+                    }else if(pilihan === '5'){
+                        proteksiMenu = false
+                    }
+                    else{
+                        alert('input salah')
+                    }
+                }
+            }else if(login(namaUser, passUser) === 'user'){
+                // menu User
+                // lihat menu => add to cart
+                // delete cart content 
+                // checkout tampilin harga
+                var proteksiBelanja = true
+                while(proteksiBelanja){
+                    var menuUser = prompt('1. Belanja \n 2. Lihat Cart \n 3. Delete isi Cart \n 4. Checkout \n 5. Keluar')
+                    if(menuUser === '1'){
+                        var pilihanBelanja = prompt(printMenu() + '\n Mau beli apa?')
+                        var qty = prompt('beli ' + menu[pilihanBelanja - 1].nama + ' berapa kilo?')
+                        //[{nama: 'apel', harga: 20000, qty : 5}, {nama: 'duren', harga: 10000, qty : 5}]
+                        addToCart(menu[pilihanBelanja - 1].nama, menu[pilihanBelanja - 1].harga, parseInt(qty))
+                    }else if (menuUser === '2'){
+                        alert(printCart())
+                    } else if(menuUser === '3'){
+                        var menuDelete = parseInt(prompt(printCart() + ' \n ' + 'Mau delete yang mana'))
+                        var confirm = prompt(cartUser.splice(menuDelete-1, 1) + ' akan didelete \n 1. Ya \n 2. Tidak')
+                        alert('Success ')
+                    } else if(menuUser === '4'){
+                        var pilihanEdit = parseInt(prompt(printMenu() +' \n' + 'Mau Edit yang Mana'))
+                      var editNama = prompt('Nama Produk Awal ' + menu[pilihanEdit -1].nama)
+                        var editHarga = parseInt(prompt('Harga Awal = Rp. ' + menu[pilihanEdit-1].harga))
+                        var confirm = prompt('Nama Produk Baru adalah ' + editNama + '\n dengan Harga Baru Rp. ' +editHarga.toLocaleString() + '\n 1. Setuju \n 2. Tidak')
+                        if(confirm === '1'){
+                       menu[pilihanEdit - 1].nama = editNama
+                         menu[pilihanEdit -1].harga = editHarga.toLocaleString()
+                         alert('Success')
+                     }else if(confirm === '2'){
+                // alert('Cancel')
+            }
+                    } else if(menuUser === '5'){
+                        alert('Total Belanja anda sebesar Rp.' + calculateTotal())
+                    } else if(menuUser === '6'){
+                        var proteksi = false
+                    }
+                }
+            }else{
+                    alert('Login Failed')
+            }
+        }else if(menuAwal === '2'){
+            var namaUser = prompt('Daftarkan Nama Anda')
+            var passUser = prompt('Password Anda?')
+           register(namaUser, passUser)
+           alert('Register Success')
+        }else if(menuAwal === '3'){
+           var proteksi = false
+        }
+    }
+</script>
+

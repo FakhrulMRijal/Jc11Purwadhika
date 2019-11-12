@@ -1,0 +1,18 @@
+
+<form id="form">
+      <input type="text"  id="nama" placeholder="Input My name">
+      <input type="text"  id="ttl" placeholder="Your born">
+      <input type="text"  id="Sekolah" placeholder="Your school">
+      <input type="button" value="Click Me" onclick=alertNama()>
+</form>  
+<h3 id = 'hasil'>
+    hasil Disini
+</h3>    
+<script>
+
+        function alertNama() {
+           var a = document.getElementById("form").elements[0].id 
+           var b = document.getElementById("form").elements[1].id
+            document.getElementById('hasil').innerHTML = ' $(0)'
+        }
+</script>

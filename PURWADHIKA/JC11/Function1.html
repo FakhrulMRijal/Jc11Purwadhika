@@ -1,0 +1,21 @@
+<script>
+    var listBuah = ['apel ', 'mangga ', 'kiwi ']
+    var listHarga = [10000, 20000, 30000]
+    alert(printMenu(listBuah))
+    alert(printHarga(listHarga))
+
+
+    function printMenu(menu, harga){
+        for(var i = 0; i < menu.length; i++){
+            output += (i+1) + ' ' + menu[i] + '\n'
+        }
+        return output
+    }
+
+    function printHarga(harga, menu){
+        for(var i = 0; i < harga.length; i++){
+            output += (i+1) + 'Rp. ' + harga[i] + '\n'
+        }
+        return output
+    }
+</script>

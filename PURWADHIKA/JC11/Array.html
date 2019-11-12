@@ -1,0 +1,119 @@
+<script>
+    var proteksi = true
+    var cart = []
+    var total = 0
+    var menu = ['anggur ', 'mangga ', 'jeruk ']
+    var harga = [10000, 20000, 50000]
+    var materi = ['Segitiga ', 'Kotak ']
+
+    
+    while(proteksi){
+        var proteksiMenu = true
+        var pilihan = prompt('Mau apa? \n 1. belanja \n 2 belajar')
+        
+        if(pilihan == 1){
+            while(proteksiMenu){
+                var belanja = prompt('Mau beli apa? \n 1. anggur Rp. 10000 \n 2. mangga Rp. 20000 \n 3. jeruk 50000 \n 4. cart')
+                var proteksiMenu = false
+            } if(belanja == 1){
+                cart.push(menu[0])
+                total += harga[0]
+                alert('Add to cart success')
+            } else if(belanja == 2){
+            cart.push(menu[1])
+            total += harga[1]
+            alert('Add to cart success')
+        } else if(belanja == 3){
+            cart.push(menu[2])
+            total += harga[2]
+            alert('Add to cart success')
+        }else if(belanja == 4){
+            if(cart.length === 0){
+                alert('tolong belanja dulu')
+            } else {
+                alert(cart)
+                alert('total belanja anda Rp. ' + total)
+                proteksiMenu = false
+             }
+        } else {
+            alert('Input anda salah')
+        } 
+        
+    } else if(pilihan == 2){
+        var proteksiBelajar = true
+       while(proteksiBelajar){
+           var belajar = prompt('Mau belajar apa? \n 1. Segitiga \n 2. Kotak')
+           var proteksiInput = true
+           if(belajar == 1){
+              while(proteksiInput){
+                  var input1 = parseInt(prompt('Silahkan masukkan angka pertama'))
+                  var input2 = parseInt(prompt('Silahkan masukkan angka kedua'))
+                  alert(segitiga(input1 + input2))
+                  var redirect = prompt('\n 1. Balik Belajar \n 2. Menu utama \n 3. Keluar ')
+                  if(redirect == 1){
+                      proteksiInput = false 
+                  } else if(redirect == 2){
+                      proteksiInput = false
+                      proteksiBelajar = false
+                  } else if(redirect == 3){
+                      proteksiInput = false
+                      proteksiBelajar = false
+                      proteksi = false
+                  }
+                  else {
+                      alert('Anda salah input')
+                  }
+              } 
+           } else if(belajar == 2){
+            while(proteksiInput){
+                  var input1 = parseInt(prompt('Silahkan masukkan angka pertama'))
+                  var input2 = parseInt(prompt('Silahkan masukkan angka kedua'))
+                  alert(kotak(input1 + input2))
+                  var redirect = prompt('\n 1. Balik Belajar \n 2. Menu utama \n 3. Keluar ')
+                  if(redirect == 1){
+                      proteksiInput = false 
+                  } else if(redirect == 2){
+                      proteksiInput = false
+                      proteksiBelajar = false
+                  } else if(redirect == 3){
+                      proteksiInput = false
+                      proteksiBelajar = false
+                      proteksi = false
+                  }
+                  else {
+                      alert('Anda salah input')
+                  }
+              } 
+           }
+       } 
+    }
+
+
+    function segitiga(length) {
+  var baris = " ";
+  for (var i = 1; i <= length; i++) {
+    for (var j = 1; j <= i; j++) {
+      baris += "* ";
+
+    }
+    baris += "\n";
+  }
+  return baris;
+}
+;
+
+    function kotak(persegi){
+        var kotak = "";
+        for(var i = 0; i < persegi; i++){
+            for(var j = 0; j < persegi; j++){
+                kotak += "* "
+            }
+            kotak += "\n "
+        }
+        return kotak
+    }
+ 
+}
+
+
+    </script>

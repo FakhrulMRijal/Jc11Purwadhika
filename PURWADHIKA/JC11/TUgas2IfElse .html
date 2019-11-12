@@ -1,0 +1,43 @@
+<!-- genap ganjil
+bedain angka string
+pangkat yang hasilnya dibawah 50 & 1-100 & diatas 100 -->
+
+<!-- //ganjil dan genap -->
+<script>
+        var input = prompt("Masukkan Nilai")
+        var result = input % 2
+    
+        if(result === 0){
+            alert('Genap')
+        } else {
+            alert('Ganjil')
+        }
+    </script>
+    <!-- //bedain angka dan string -->
+
+    <script>
+      
+            var num = prompt(' Masukkan String')
+            var num = parseInt(num)
+            var strNum = ''
+      
+            if(num) {
+                alert(' true')
+            } else {
+                alert(' false')
+            }
+       </script>
+      
+ <!-- // pangkat yang hasilnya dibawah 50 & 1-100 & diatas 100 -->
+ <script>
+     var nilai = prompt(' Masukkan nilai yang ingin dikuadratkan')
+     var nilai = Math.pow(nilai, 2)
+
+     if(nilai < 50 ){
+         alert(nilai + ' Hasilnya dibawah 50')
+     } else if (nilai <= 100) {
+         alert(nilai + ' Hasilnya diantara 1 - 100')
+     } else {
+         alert(nilai + ' NIlai Diatas 100')
+     }
+ </script>

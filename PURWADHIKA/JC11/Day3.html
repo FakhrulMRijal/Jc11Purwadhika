@@ -1,0 +1,102 @@
+<script>
+    var protect = true
+    var protectMenu = true
+    while(protect){
+        var input1 = prompt('Masukkan nama anda ')
+        if(input1){
+            alert('Selamat datang ' + input1)
+            while(protectMenu){
+                var pilihan = prompt('Mau Belanja atau Belajar?')
+                if(pilihan == 'Belanja') {
+                    var belanja = prompt('Mau belanja apa \n 1. Apel Rp.10000 \n 2. mangga Rp.5000 \n 3. kiwi Rp. 4000')
+                    var proteksiQty = true
+                if(belanja == 1){
+                    alert(' Anda beli apel ')
+                    while(proteksiQty){
+                    
+                    var input = parseInt (prompt('Mau beli berapa kilo? '))
+                    if(isNaN(input)){
+                        alert(' Input anda salah')
+                    } else { 
+                        alert('Total harga anda ' + input * 10000)
+                        protectMenu = false 
+                        protect = false
+                        proteksiQty = false
+                    }
+                    
+                    
+                  }
+                } else if(belanja == 2){
+                    alert(' Anda beli mangga ')
+                    while(proteksiQty){
+                    var input = parseInt(prompt('Mau beli berapa kilo?'))
+                    if(isNaN(input)){
+                        alert(' Input anda salah')
+                    } else {
+                    alert(' Total harga anda ' + input * 5000)
+                    protectMenu = false
+                    protect = false
+                    proteksiQty = false
+                    }
+                }
+                } else if(belanja == 3){
+                    alert('Anda beli kiwi')
+                    while(proteksiQty){
+                    var input = parseInt(prompt('Mau beli brapa kilo?'))
+                   if(isNaN(input)){ 
+                       alert('Input anda salah')
+
+                } else {
+                    alert(' Total harga anda ' + input * 4000)
+                    protectMenu = false
+                    protect = false
+                    proteksiQty = false
+                  }
+                  
+                    
+                }
+            }
+                }  else if(pilihan == 'Belajar'){
+                   while(pilihanBlajar){
+                    var belajar = prompt(' Mau Belajar apa? \n 1. Tambahan \n 2. Kurangan \n 3. Perkalian \n 4. Pembagian')
+                    var pilihanBlajar = true
+                    if(belajar == '1'){
+                        var angka1 = prompt('Masukkan angka pertama ')
+                        var angka2 = prompt('Masukkan angka kedua ')
+                        var angka1 = parseInt(angka1)
+                        var angka2 = parseInt(angka2)
+                        var hasil = angka1 + angka2
+                        alert('Hasilnya adalah ' + Hasil)
+                    } else if(belajar == '2'){
+                        var angka1 = prompt('Masukkan angka pertama ')
+                        var angka2 = prompt('Masukkan angka kedua ')
+                        var angka1 = parseInt(angka1)
+                        var angka2 = parseInt(angka2)
+                        var hasil2 = angka1 - angka2
+                        alert('Hasilnya adalah ' + Hasil)
+                    } else if(belajar == '3'){
+                        var angka1 = prompt('Masukkan angka pertama ')
+                        var angka2 = prompt('Masukkan angka kedua ')
+                        var angka1 = parseInt(angka1)
+                        var angka2 = parseInt(angka2)
+                        var hasil3 = angka1 * angka2
+                        alert('Hasilnya adalah ' + Hasil)
+                    } else if(belajar == '4'){
+                        var angka1 = prompt('Masukkan angka pertama ')
+                        var angka2 = prompt('Masukkan angka kedua ')
+                        var angka1 = parseInt(angka1)
+                        var angka2 = parseInt(angka2)
+                        var hasil4 = angka1 / angka2
+                        alert('Hasilnya adalah ' + Hasil)
+                    } 
+                } 
+            }
+               }
+            } else {
+            alert('Tolong masukkan nama anda ')
+        }
+     }
+         
+    
+
+</script>

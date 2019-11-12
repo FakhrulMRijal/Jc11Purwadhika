@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Daftar Manusia</title>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Daftar Manusia</h2>
+    <form id="form" >
+        <input type="text" name="name" placeholder="Input Your name">
+        <br>
+        <input type="number" name="age" placeholder="age">
+        <br>
+        <input type="radio"  name="gender" value='Men' onclick="tambahGender(this.value)">Men</input>
+        <input type="radio"  name="gender" value='Women' onclick="tambahGender(this.value)">women</input>
+        <br>
+        <input type="text" name="jobs" placeholder="Jobs">
+        <br>
+        <input type="button" id='btn-submit' value="Submit" onclick="printData()">
+    </form>
+    
+    <div>
+        <table id="Hasil">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Jobs</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        let counter = 0;
+        let button = document.getElementById('btn-submit')
+        button.addEventListener('click', function(){
+            counter += 1;
+        })
+
+        function tambahGender(value){
+            gender = value
+        }
+
+        function printData(){
+            var nama = document.getElementById("form").elements[0].value
+            var usia = document.getElementById("form").elements[1].value
+            var jobs = document.getElementById("form").elements[4].value
+            output = `<td>${nama}</td>
+                        <td>${usia}</td>
+                        <td>${gender}</td>
+                        <td>${jobs}</td>`
+            let newRow = document.createElement('TR')
+            let tableHasil = document.getElementById('Hasil')
+            tableHasil.appendChild(newRow)
+            document.getElementsByTagName('TR')[counter+1].innerHTML = output
+            
+            document.getElementById("form").elements[0].value = ''
+            document.getElementById("form").elements[1].value = ''
+            document.getElementById("form").elements[2].checked = false;
+            document.getElementById("form").elements[3].checked = false
+            document.getElementById("form").elements[4].value = ''
+            gender = ''
+            
+            
+            // var output = ''
+            // for(var i = 0; i < data.length; i++){
+            //     output += <tr>
+            //                 <td>$(data[i].Name)</td>
+            //                 <td>$(data[i].Age)</td>
+            //                 <td>$(data[i].Jobs)</td>
+            //                 <td>$(data[i].Gender)</td>
+            //                 </tr>
+            // } document.getElementsByTagName('tbody')[1].innerHTML = output
+        }
+    </script>
+    </body>
+    
+</html>
