@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Quiz!</h3>
+        <form id="quiz"></form>
+        <input type="button" value="submit" onclick="printAnswer()"> 
+        <div id="result"></div>
+
+
+</body>
+
+<script>
+    var questions = [
+  {
+    question : "1. Siapa Presiden ketiga Indonesia?",
+    option : [
+      "Soekarno",
+      "B.J.Habibie",
+      "Jokowi",
+      "Soeharto"
+    ],
+    answer : "B.J.Habibie"
+  },
+  {
+    question : "2. Apa nama ibuKota Indonesia?",
+    option : [
+      "Bandung",
+      "Jakarta",
+      "Palembang",
+      "Medan"
+    ],
+    answer : "Jakarta"
+  },
+  {
+    question : "3. Hero Dota 2 yang mengeluarkan duri dan cooldown singkat?",
+    option : [
+    "Phantom Assasin",
+    "Faceless Void",
+    "Bristleback",
+    "Io"   
+     ],
+    answer : "Bristleback"
+  },
+  {
+    question : "4. Skor chelsea vs ajax di stamford bridge? ",
+    option : [
+      "4-4",
+      "3-2",
+      "1-1",
+      "3-1"
+    ],
+    answer : "4-4"
+  },
+];
+
+function printQuestion(){
+    var output = ``
+    for(var i = 0; i < questions.length; i++){
+        output += `
+                <div id="question">${questions[i].question} </div>
+                <input type="radio" name="${i}" value="${questions[i].option[0]}" onClick="checkAns(${i}, this.value)">${questions[i].option[0]}</input>
+                <input type="radio" name="${i}" value="${questions[i].option[1]}"onClick="checkAns(${i}, this.value)">${questions[i].option[1]}</input>
+                <input type="radio" name="${i}" value="${questions[i].option[2]}"onClick="checkAns(${i}, this.value)">${questions[i].option[2]}</input>
+                <input type="radio" name="${i}" value="${questions[i].option[3]}"onClick="checkAns(${i}, this.value)">${questions[i].option[3]}</input>`
+
+    }
+    document.getElementById("quiz").innerHTML = output
+}
+
+printQuestion()
+
+var check = ["","","",""]
+
+function checkAns(num, value){
+    check[num] = value 
+    console.log(check)   
+}
+
+function printAnswer(){
+    var total = 0
+    for(var i = 0; i < questions.length; i++){
+        if(check[i] == questions[i].answer){
+            total+= 25
+        }  else {
+            total+=0
+        }
+    }
+    document.getElementById("result").innerHTML= 'Hasil akhir anda ' + total
+}
+
+
+</script>
+    
+</html>
